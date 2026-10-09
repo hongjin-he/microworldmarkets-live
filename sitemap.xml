@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- TODO(domain): switch back to https://microworldmarkets.com/ once HTTPS works -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <url><loc>https://hongjin-he.github.io/microworldmarkets-live/</loc><xhtml:link rel="alternate" hreflang="en" href="https://hongjin-he.github.io/microworldmarkets-live/"/><xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongjin-he.github.io/microworldmarkets-live/zh.html"/></url>
-  <url><loc>https://hongjin-he.github.io/microworldmarkets-live/zh.html</loc><xhtml:link rel="alternate" hreflang="en" href="https://hongjin-he.github.io/microworldmarkets-live/"/><xhtml:link rel="alternate" hreflang="zh-Hans" href="https://hongjin-he.github.io/microworldmarkets-live/zh.html"/></url>
-  <url><loc>https://hongjin-he.github.io/microworldmarkets-live/lab.html</loc></url>
-  <url><loc>https://hongjin-he.github.io/microworldmarkets-live/method.html</loc></url>
+  <url><loc>https://microworldmarkets.com/</loc><xhtml:link rel="alternate" hreflang="en" href="https://microworldmarkets.com/"/><xhtml:link rel="alternate" hreflang="zh-Hans" href="https://microworldmarkets.com/zh.html"/></url>
+  <url><loc>https://microworldmarkets.com/zh.html</loc><xhtml:link rel="alternate" hreflang="en" href="https://microworldmarkets.com/"/><xhtml:link rel="alternate" hreflang="zh-Hans" href="https://microworldmarkets.com/zh.html"/></url>
+  <url><loc>https://microworldmarkets.com/lab.html</loc></url>
+  <url><loc>https://microworldmarkets.com/method.html</loc></url>
 </urlset>

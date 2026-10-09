@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hongjin-he.github.io/microworldmarkets-live/sitemap.xml
+Sitemap: https://microworldmarkets.com/sitemap.xml
