@@ -265,10 +265,8 @@ footer .mark+span a{text-transform:none;letter-spacing:.04em}
 :lang(zh-Hans) :is(.btn,.status,.eyebrow,.stats span,.cards time,.cards small,.badge,.io em,.team b,.team .profile,.flow b,th,td:first-child,.text,.embed>a,.lockup+*,.site-nav a,.menu){letter-spacing:.04em}
 
 /* Team photos and contact links (restored 2026-10-10 from the 10/8 approved content) */
-.team .team-photo{display:block;width:96px;height:96px;border-radius:50%;object-fit:cover;filter:grayscale(1) contrast(1.05);border:1px solid var(--line);margin-bottom:28px;transition:filter .3s ease}
-.team article:hover .team-photo,.team article:focus-within .team-photo{filter:none}
+.team .team-photo{display:block;width:96px;height:96px;border-radius:50%;object-fit:cover;border:1px solid var(--line);margin-bottom:28px}
 .team-links{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:16px}
 .team-links a{font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;padding:6px 0;border-bottom:1px solid var(--line)}
 .team-links a:hover,.team-links a:focus-visible{border-bottom-color:var(--fg)}
 :lang(zh-Hans) .team-links a{letter-spacing:.04em}
-@media (prefers-reduced-motion:reduce){.team .team-photo{transition:none}}
