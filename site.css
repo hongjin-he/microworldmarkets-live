@@ -270,3 +270,19 @@ footer .mark+span a{text-transform:none;letter-spacing:.04em}
 .team-links a{font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;padding:6px 0;border-bottom:1px solid var(--line)}
 .team-links a:hover,.team-links a:focus-visible{border-bottom-color:var(--fg)}
 :lang(zh-Hans) .team-links a{letter-spacing:.04em}
+
+/* Homepage v4: reuse existing layout, type, cards, buttons and team styles. */
+.homepage-v4 .demos{align-items:start}
+.homepage-v4 .demos article{min-width:0}
+.homepage-v4 .demos .embed{margin:24px 0}
+.homepage-v4 video{display:block;width:100%;max-width:100%;height:auto;aspect-ratio:16/9;background:#000}
+.homepage-v4 .position-totals{max-width:none;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:28px 0;font-size:clamp(18px,2.3vw,30px);line-height:1.5}
+.homepage-v4 .example{margin:32px 0 20px}
+.homepage-v4 .stages h3{max-width:28ch}
+.homepage-v4 #star-map,.homepage-v4 #what-if{scroll-margin-top:calc(var(--head) + 24px)}
+.homepage-v4 .contact>div{min-width:0}
+.homepage-v4 .contact a{overflow-wrap:anywhere}
+@media(max-width:700px){
+ .homepage-v4 .hero h1{font-size:calc((100vw - 2 * var(--pad)) / 6.8)}
+ .homepage-v4 .contact h2{font-size:clamp(32px,8.5vw,40px);max-width:none}
+}
