@@ -286,3 +286,19 @@ footer .mark+span a{text-transform:none;letter-spacing:.04em}
  .homepage-v4 .hero h1{font-size:calc((100vw - 2 * var(--pad)) / 6.8)}
  .homepage-v4 .contact h2{font-size:clamp(32px,8.5vw,40px);max-width:none}
 }
+
+/* S05: hero-only overlays. Existing page text, sections and other pages are unchanged. */
+.homepage-v4 .hero[data-star-field="ready"] .field{z-index:0}
+.homepage-v4 .hero[data-star-field="ready"] .hero-grid{position:relative;z-index:2}
+.homepage-v4 .hero[data-star-field="ready"]:before{z-index:2}
+.homepage-v4 .hero[data-star-field="ready"]:after{z-index:1}
+.homepage-v4 .hero[data-star-field="ready"]:after{background:linear-gradient(to right,rgba(0,0,0,.93) 0%,rgba(0,0,0,.72) 28%,rgba(0,0,0,.08) 66%,rgba(0,0,0,0) 100%),linear-gradient(to top,#000 0%,rgba(0,0,0,.78) 23%,rgba(0,0,0,.1) 65%,rgba(0,0,0,.12) 100%)}
+.homepage-v4 .star-field-hud{position:absolute;right:var(--pad);bottom:26px;z-index:2;max-width:calc(100% - 2 * var(--pad));color:#aaa;font:10px/1.65 ui-monospace,SFMono-Regular,Consolas,monospace;text-align:right;pointer-events:none}
+.homepage-v4 .star-field-hud strong{display:block;margin-bottom:6px;color:#d4d4d4;font-size:15px;font-weight:400;letter-spacing:.06em;font-variant-numeric:tabular-nums;white-space:pre}
+.homepage-v4 .star-field-hud span{display:block;white-space:nowrap}
+@media(max-width:699px){
+ .homepage-v4 .hero[data-star-field="ready"]{padding-bottom:174px}
+ .homepage-v4 .hero[data-star-field="ready"]:after{background:linear-gradient(to right,rgba(0,0,0,.93),rgba(0,0,0,.45) 48%,rgba(0,0,0,.08) 100%),linear-gradient(to top,#000 38%,rgba(0,0,0,.65) 62%,rgba(0,0,0,0) 100%)}
+ .homepage-v4 .star-field-hud{bottom:66px;font-size:9px;line-height:1.65}
+ .homepage-v4 .star-field-hud strong{font-size:13px}
+}

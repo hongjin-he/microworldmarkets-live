@@ -1,0 +1,137 @@
+/* v6 trial — seed 4b9f08a8…: ember (h56) = liquidated, teal (h157) = survives, warm bone ink, serif voice over D-DIN */
+:root{--bg:#0a0908;--fg:#ece6da;--muted:#9b948a;--line:rgba(236,230,218,.16);--ember:#ff8a1f;--teal:#3fd0a4;
+ --serif:"Iowan Old Style","Charter","Palatino Linotype",Georgia,"Songti SC",serif;--mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;--rhythm:clamp(72px,10vw,132px)}
+body{background:var(--bg);color:var(--fg)}
+.site-header.scrolled,.site-header.solid{background:rgba(10,9,8,.92);backdrop-filter:blur(8px)}
+::selection{background:var(--ember);color:#000}
+/* hero: product is the hero */
+.hero:before{display:none}
+.homepage-v4 .hero{padding-top:calc(var(--head) + 24px);padding-bottom:64px;min-height:100svh}
+.homepage-v4 .hero[data-star-field="ready"]{padding-bottom:64px}
+.homepage-v4 .hero[data-star-field="ready"]:after,.homepage-v4 .hero:after{background:linear-gradient(to top,var(--bg) 0%,rgba(10,9,8,.55) 30%,rgba(10,9,8,0) 62%),linear-gradient(to right,rgba(10,9,8,.8) 0%,rgba(10,9,8,0) 55%)}
+.eyebrow{font:700 12px/1 var(--font);letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin:0 0 20px}
+.homepage-v4 .hero h1{font:700 13px/1 var(--font);letter-spacing:.42em;margin:0 0 22px;color:var(--ember);white-space:normal}
+.hero .headline{font:400 clamp(48px,9.2vw,148px)/.94 var(--serif);letter-spacing:-.025em;text-transform:none;margin:0 0 32px;max-width:11ch}
+.hero .sub{max-width:44ch;color:#cfc8bb;font-size:clamp(16px,1.35vw,19px)}
+.btn{border-radius:0}
+.btn.primary{background:var(--ember);border-color:var(--ember);color:#0a0908}
+.btn.primary:hover{background:var(--fg);border-color:var(--fg)}
+.btn:not(.primary){border-color:var(--line);color:var(--fg)}
+.status{font:11px/1.6 var(--mono);letter-spacing:.04em;color:var(--muted)}
+.homepage-v4 .star-field-hud{bottom:64px;color:var(--muted);font-size:11px}
+.homepage-v4 .star-field-hud strong{color:var(--ember);font:400 clamp(28px,4vw,56px)/1 var(--mono);letter-spacing:-.02em;margin-bottom:10px}
+/* numbered sections, serif headings */
+main{counter-reset:s}
+.section{counter-increment:s;padding:var(--rhythm) 0;border-top:1px solid var(--line)}
+.section>.shell:before{content:"0" counter(s) " / " attr(data-tag);display:block;font:11px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ember);margin-bottom:28px}
+.section h2{font:400 clamp(34px,5.4vw,84px)/1 var(--serif);letter-spacing:-.02em;text-transform:none;max-width:16ch}
+.section .lead{max-width:56ch;color:#cfc8bb}
+/* problem: monumental stat */
+.mega{font:400 clamp(120px,26vw,420px)/.8 var(--serif);letter-spacing:-.05em;color:var(--ember);margin:0 0 .12em -.04em}
+.mega small{font-size:.28em;letter-spacing:0;margin-left:.08em;color:var(--fg);font-family:var(--font);font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+#problem h2{font-size:clamp(26px,3.6vw,52px);max-width:22ch}
+.cards.three{display:block;border-top:1px solid var(--line);margin-top:56px}
+.cards.three:not(.team) article{display:grid;grid-template-columns:3.5rem minmax(0,5fr) minmax(0,7fr);gap:24px;align-items:baseline;padding:22px 0;border-bottom:1px solid var(--line);border-top:0;background:none}
+.cards.three:not(.team){counter-reset:c}
+.cards.three:not(.team) article:before{counter-increment:c;content:"0" counter(c);font:11px var(--mono);color:var(--muted)}
+.cards.three:not(.team) h3{font:400 clamp(20px,2.2vw,30px)/1.15 var(--serif);text-transform:none;letter-spacing:-.01em;margin:0}
+.cards.three:not(.team) p{margin:0;color:var(--muted)}
+@media(max-width:760px){.cards.three:not(.team) article{grid-template-columns:2.5rem 1fr}.cards.three:not(.team) article p{grid-column:2}}
+/* built: videos as living windows, no player chrome */
+.homepage-v4 .demos .embed{margin:20px 0;border:1px solid var(--line)}
+.homepage-v4 video{pointer-events:none;filter:saturate(1.1)}
+.demos h3,.stages h3{font:700 12px/1 var(--font);letter-spacing:.24em;text-transform:uppercase;color:var(--ember)}
+.homepage-v4 .stages h3{font:400 clamp(22px,2.4vw,34px)/1.15 var(--serif);text-transform:none;letter-spacing:-.01em;color:var(--fg);max-width:20ch}
+.homepage-v4 .position-totals{font:400 clamp(15px,1.8vw,24px)/1.5 var(--mono);color:var(--teal);letter-spacing:-.01em;border-color:var(--line)}
+.homepage-v4 .example{font:400 clamp(22px,2.6vw,36px)/1.25 var(--serif);max-width:34ch}
+.note{font:11px/1.6 var(--mono);color:var(--muted)}
+/* idea: visible vs hidden game */
+.stages{border-top:0}
+.stages article{position:relative;padding-top:40px}
+.stages article:before{content:"";position:absolute;top:0;left:0;width:18px;height:18px;border-radius:50%;background:var(--teal)}
+.stages article+article:before{background:none;border:1px dashed var(--muted)}
+/* closing statement */
+.callout{margin:96px 0 0 auto;max-width:20ch;text-align:left}
+.callout em{display:block;font:italic 400 clamp(32px,4.8vw,72px)/1.04 var(--serif);letter-spacing:-.02em;text-transform:none;color:var(--fg)}
+.callout em:first-line{color:var(--ember)}
+/* team */
+.team-photo{filter:grayscale(1) contrast(1.05);aspect-ratio:1;object-fit:cover;width:100%;max-width:220px}
+.team h3{font:400 24px var(--serif);text-transform:none}
+.team b{font:700 11px var(--font);letter-spacing:.2em;text-transform:uppercase;color:var(--teal)}
+.contact h2{font:400 clamp(30px,4.6vw,64px)/1.05 var(--serif);text-transform:none}
+.contact a{color:var(--ember);font:400 clamp(18px,2.4vw,32px) var(--mono)}
+footer{color:var(--muted)}
+.cards.three.team{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;margin-top:48px}
+@media(max-width:760px){.cards.three.team{grid-template-columns:1fr}}
+.team-photo{border-radius:0;max-width:100%;margin-bottom:20px}
+.shell.contact:before{grid-column:1/-1;margin-bottom:0}
+/* round 2 + fixes: bigger liquidation counter, mobile hero overlap */
+.homepage-v4 .star-field-hud strong{font-size:clamp(34px,4.4vw,64px);letter-spacing:-.03em}
+.homepage-v4 .star-field-hud{font-size:12px}
+@media(max-width:760px){.homepage-v4 .hero,.homepage-v4 .hero[data-star-field="ready"]{padding-bottom:170px}.homepage-v4 .star-field-hud{bottom:20px;left:var(--pad);right:auto;text-align:left}.homepage-v4 .star-field-hud strong{font-size:30px}}
+.team-photo{filter:none!important}
+/* ===== round 4: one persistent world behind the whole page ===== */
+.world-field{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;filter:brightness(1.55) contrast(1.1) saturate(1.15);transition:none}
+.homepage-v4 .hero .field{display:none}
+.world-hud{position:fixed;right:var(--pad);bottom:28px;z-index:3;font:400 clamp(32px,4.4vw,64px)/1 var(--mono);letter-spacing:-.03em;color:var(--ember);white-space:pre;pointer-events:none;opacity:0;transition:opacity .35s}
+.world-hud:after{content:"replay · Oct 10, 2025 · each star is a real position";display:block;margin-top:10px;font:12px/1.4 var(--mono);letter-spacing:.02em;color:var(--muted);text-align:right}
+.homepage-v4 .hero[data-star-field="ready"]:after,.homepage-v4 .hero:after{background:linear-gradient(to right,rgba(10,9,8,.78) 0%,rgba(10,9,8,0) 52%)}
+.section{background:transparent}
+.section .lead,.section h2,.cards.three:not(.team),.demos article{text-shadow:0 0 24px rgba(10,9,8,.9)}
+@media(max-width:760px){.world-hud{font-size:28px;bottom:16px;left:var(--pad);right:auto}.world-hud:after{text-align:left}}
+/* ===== round 5: impact ===== */
+body:after{content:"";position:fixed;inset:0;z-index:5;pointer-events:none;opacity:.06;background:url(assets/v5/grain.svg);mix-blend-mode:screen}
+.world-field{filter:brightness(1.25) contrast(1.15) saturate(1.2)}
+.world-hud{font-size:clamp(56px,10vw,168px);letter-spacing:-.045em;font-variant-numeric:tabular-nums;bottom:36px;line-height:.9;text-shadow:0 0 60px rgba(255,138,31,.45)}
+.world-hud:after{font-size:14px;margin-top:14px;color:#b8b1a5}
+.homepage-v4 .star-field-hud strong{font-size:clamp(40px,5.6vw,84px);text-shadow:0 0 40px rgba(255,138,31,.4)}
+.site-nav a{font-size:13px}
+body{color:#e4ddd0}
+.section .lead,.hero .sub{color:#d9d2c5}
+.btn.primary{box-shadow:0 0 0 0 rgba(255,138,31,.0);transition:box-shadow .25s,background .2s}
+.btn.primary:hover{box-shadow:0 0 36px 4px rgba(255,138,31,.45)}
+/* team: large editorial portraits, in colour */
+.cards.three.team{gap:48px}
+.team-photo{border-radius:0!important;aspect-ratio:4/5;width:100%;max-width:none;object-fit:cover;object-position:center 22%;filter:none!important;margin-bottom:24px}
+.team h3{font-size:clamp(26px,2.6vw,38px)}
+.team p{font-size:clamp(15px,1.3vw,18px);color:#d9d2c5}
+.team b{font-size:12px;color:var(--ember)}
+@media(max-width:760px){.world-hud{font-size:56px}}
+/* round 5b */
+.world-hud{font-size:clamp(64px,11vw,176px);bottom:40px;text-align:right}
+.world-hud:before{content:"LIQUIDATED";display:block;font:700 13px/1 var(--font);letter-spacing:.34em;color:var(--muted);margin-bottom:14px;text-shadow:none}
+.homepage-v4 .star-field-hud strong{font-size:clamp(34px,4.4vw,64px)}
+.team .team-photo{width:100%!important;height:auto!important;aspect-ratio:4/5;border-radius:0!important;border:0!important;object-fit:cover;object-position:center 22%;filter:none!important;margin-bottom:24px}
+.world-hud{bottom:auto;top:92px}
+@media(max-width:760px){.world-hud{top:auto;bottom:16px}}
+/* ===== round 6: one hero numeral, no collisions, bigger small type, cinematic video, graded portraits ===== */
+.mega{font-size:clamp(88px,15vw,230px)}
+.world-hud{white-space:nowrap;top:88px}
+.world-hud:after{content:"each star = a real position";position:absolute;right:0;top:100%;margin-top:10px;font-size:13px;white-space:nowrap}
+.section>.shell:before{content:attr(data-tag);font-size:12px;letter-spacing:.24em;color:var(--fg);opacity:.8}
+.note,.status,.homepage-v4 .star-field-hud span,.world-hud:before{font-size:13px!important}
+.status,.homepage-v4 .star-field-hud{color:#b8b1a5}
+.homepage-v4 .star-field-hud strong{margin-bottom:12px}
+/* built: full-bleed cinematic windows */
+.io.demos{display:block}
+.homepage-v4 .demos article{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:8px 40px;margin-bottom:96px;border-top:0;padding-top:0}
+.homepage-v4 .demos article h3{grid-column:1;grid-row:1}
+.homepage-v4 .demos article p{grid-column:2;grid-row:3;max-width:60ch;color:#d9d2c5}
+.homepage-v4 .demos article .embed{grid-column:1/-1;grid-row:2;width:100vw;max-width:none;margin:20px 0 28px calc(50% - 50vw);border:0;background:#000}
+.homepage-v4 .demos video{aspect-ratio:21/9;object-fit:cover;filter:contrast(1.2) brightness(1.15) saturate(1.2)}
+@media(max-width:760px){.homepage-v4 .demos article{display:block}.homepage-v4 .demos video{aspect-ratio:16/10}}
+/* team: one colour grade for all three */
+.team .team-photo{filter:sepia(.18) saturate(.9) contrast(1.06) brightness(.94)!important;aspect-ratio:4/5}
+.team .team-photo{position:relative}
+.cards.three.team article{position:relative}
+.homepage-v4 #problem .lead{max-width:42ch}
+.world-hud{padding:18px 18px 40px 40px;margin:-18px -18px 0 0;background:radial-gradient(closest-side at 70% 45%,rgba(10,9,8,.82),rgba(10,9,8,0))}
+/* ===== Chinese page ===== */
+html:lang(zh) .world-hud:before{content:"已强平";letter-spacing:.3em}
+html:lang(zh) .world-hud:after{content:"每颗星 = 一个真实仓位"}
+html:lang(zh) .section>.shell:before{letter-spacing:.3em}
+html:lang(zh) .section h2,html:lang(zh) .hero .headline,html:lang(zh) .callout em{letter-spacing:-.01em}
+html:lang(zh) .callout em{font-style:normal}
+html:lang(zh) .hero .headline{max-width:7em;line-height:1.06}
+html:lang(zh) .section h2{line-height:1.15;max-width:14em}
+html:lang(zh) .homepage-v4 .stages h3,html:lang(zh) .cards.three:not(.team) h3{line-height:1.3}
