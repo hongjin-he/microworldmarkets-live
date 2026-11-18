@@ -109,24 +109,9 @@
       }
     }
 
-    var hud = document.createElement('div');
-    hud.className = 'star-field-hud';
-    var zh = /^zh/i.test(document.documentElement.lang || '');
-    hud.lang = zh ? 'zh-Hans' : 'en';
-    hud.setAttribute('aria-live', 'off');
-    var counter = document.createElement('strong');
-    counter.textContent = (zh ? '已强平  $' : 'LIQUIDATED  $') + '0M';
-    var positionNote = document.createElement('span');
-    positionNote.textContent = zh ? '3,710 个真实仓位 · 每一个都将成为一个 AI 智能体' : '3,710 real positions · each becomes an AI agent';
-    var replayNote = document.createElement('span');
-    replayNote.textContent = zh ? '回放 · 2025 年 10 月 10 日价格 · 交互仅为示意' : 'replay · Oct 10, 2025 prices · interactions illustrative';
-    hud.append(counter, positionNote, replayNote);
-    hero.appendChild(hud);
     hero.dataset.starField = 'ready';
     canvas.className = 'field world-field';
     document.body.insertBefore(canvas, document.body.firstChild);
-    var numberFormat = new Intl.NumberFormat('en-US', {maximumFractionDigits: 0});
-    var previousAmount = -1;
     var cum = data.sourceCumulativeLiquidatedUsd;
     var prices = data.pricePaths.BTC.normalizedClose;
     var endMinute = cum.length - 1;
@@ -151,13 +136,10 @@
     }
 
     // ---- v4 "persistent world": one fixed canvas whose pose follows the section in view ----
-    var POSES = {top: [0.72, 0.50, 0.50, 1, 0], problem: [0.74, 0.50, 0.50, 1, 0.1], built: [0.50, 0.50, 0.85, 0.45, 0.2], idea: [0.80, 0.52, 0.70, 0.7, 1], team: [0.5, 0.5, 0.8, 0.16, 0.3], contact: [0.5, 0.5, 0.8, 0.16, 0.3]};
+    var POSES = {top: [0.72, 0.50, 0.50, 1, 0], problem: [0.74, 0.50, 0.50, 1, 0.1], built: [0.50, 0.50, 0.85, 0.45, 0.2], whatif: [0.50, 0.50, 0.85, 0.45, 0.2], idea: [0.80, 0.52, 0.70, 0.7, 1], team: [0.5, 0.5, 0.8, 0.16, 0.3], contact: [0.5, 0.5, 0.8, 0.16, 0.3]};
     var ws = {cx: 0.7, cy: 0.5, sc: 0.62, dim: 1, agents: 0, init: false};
-    var worldHud = document.createElement('div');
-    worldHud.className = 'world-hud'; worldHud.setAttribute('aria-hidden', 'true');
-    document.body.appendChild(worldHud);
     var secs = {};
-    ['top', 'problem', 'built', 'idea', 'team', 'contact'].forEach(function (id) { secs[id] = document.getElementById(id); });
+    ['top', 'problem', 'built', 'whatif', 'idea', 'team', 'contact'].forEach(function (id) { secs[id] = document.getElementById(id); });
     function clamp01(u) { return Math.max(0, Math.min(1, u)); }
     function worldPose() {
       var mid = innerHeight * 0.5, mode = 'top';
@@ -177,21 +159,14 @@
       if (reduced) t = 0;
       var world = worldPose();
       var cycle = t % 14;
-      if (!reduced && world.inProblem) cycle = 4 + world.probP * 7.6;
+      if (!reduced && world.inProblem) cycle = 4 + clamp01(world.probP / 0.7) * 7.6;
       else if (!reduced && world.mode !== 'top' && world.mode !== 'problem') cycle = 0.3;
       canvas.style.opacity = ws.dim.toFixed(3);
-      worldHud.style.opacity = world.inProblem && world.probP > 0.12 && world.probP < 0.97 ? 1 : 0;
       var shock = cycle >= 4 && cycle < 12;
       var restoring = cycle >= 12;
       var minute = cycle < 4 ? 0 : Math.min(endMinute, (cycle - 4) / 8 * endMinute);
       var lo = Math.floor(minute), hi = Math.min(endMinute, lo + 1), frac = minute - lo;
       var amount = cycle < 4 ? 0 : cum[lo] + (cum[hi] - cum[lo]) * frac;
-      var millions = Math.round(amount / 1e6);
-      if (millions !== previousAmount) {
-        counter.textContent = (zh ? '已强平  $' : 'LIQUIDATED  $') + numberFormat.format(millions) + 'M';
-        worldHud.textContent = '$' + numberFormat.format(millions) + 'M';
-        previousAmount = millions;
-      }
       mouse.sx += (mouse.x - mouse.sx) * 0.05; mouse.sy += (mouse.y - mouse.sy) * 0.05;
       var cx = W * (mobile ? 0.5 : ws.cx) + (mouse.sx - 0.5) * 46, cy = H * ws.cy + (mouse.sy - 0.5) * 28;
       var scale = Math.min(W * ws.sc, H * ws.sc * 1.05) * (world.inProblem ? 1 - 0.22 * world.probP : 1);
@@ -288,19 +263,6 @@
         var vg = ctx.createRadialGradient(W / 2, H / 2, Math.min(W, H) * 0.35, W / 2, H / 2, Math.max(W, H) * 0.75);
         vg.addColorStop(0, 'rgba(255,90,30,0)'); vg.addColorStop(1, 'rgba(255,90,30,' + (0.07 * heat) + ')');
         ctx.fillStyle = vg; ctx.fillRect(0, 0, W, H);
-      }
-      if (!reduced && world.inProblem && !mobile) {
-        // cumulative liquidated USD, source data only, drawn up to the current replay minute
-        var x0 = W * 0.58, x1 = W * 0.94, yb = 392, yh = 64, total = cum[endMinute];
-        ctx.strokeStyle = 'rgba(236,230,218,0.16)'; ctx.lineWidth = 1;
-        ctx.beginPath(); ctx.moveTo(x0, yb); ctx.lineTo(x1, yb); ctx.stroke();
-        ctx.strokeStyle = 'rgba(255,138,31,0.95)'; ctx.lineWidth = 1.6; ctx.beginPath();
-        for (var m = 0; m <= lo; m++) { var px = x0 + (x1 - x0) * m / endMinute, py = yb - yh * cum[m] / total; if (m === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py); }
-        var hx = x0 + (x1 - x0) * minute / endMinute, hy = yb - yh * amount / total;
-        ctx.lineTo(hx, hy); ctx.stroke();
-        ctx.fillStyle = '#ff8a1f'; ctx.beginPath(); ctx.arc(hx, hy, 3.2, 0, Math.PI * 2); ctx.fill();
-        ctx.fillStyle = 'rgba(190,182,170,0.95)'; ctx.font = '12px ui-monospace, Menlo, monospace'; ctx.textAlign = 'right';
-        ctx.fillText(zh ? '累计强平 · 2025 年 10 月 10 日 · 回放' : 'CUMULATIVE · OCT 10, 2025 · REPLAY', x1, yb + 22); ctx.textAlign = 'left';
       }
     }
 

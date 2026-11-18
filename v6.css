@@ -126,6 +126,75 @@ body{color:#e4ddd0}
 .cards.three.team article{position:relative}
 .homepage-v4 #problem .lead{max-width:42ch}
 .world-hud{padding:18px 18px 40px 40px;margin:-18px -18px 0 0;background:radial-gradient(closest-side at 70% 45%,rgba(10,9,8,.82),rgba(10,9,8,0))}
+/* ===== round 7: one story — each screen says one thing, nothing drawn over body text ===== */
+.stages article:before{display:none}
+.stages article{padding-top:28px}
+.stages article:first-child{border-top:2px solid var(--ember)}
+.contact a{font:400 clamp(20px,2.4vw,30px) var(--serif);color:var(--ember)}
+.homepage-v4 .demos article{margin-bottom:72px}
+/* built: one-line heading sitting right on the video; video capped so heading + whole video + caption fit one screen after a nav jump */
+#built h2{max-width:none;font-size:clamp(30px,4.2vw,60px);margin:0 0 20px}
+#built .io.demos{margin-top:0;padding-top:0;border-top:0}
+.homepage-v4 #star-map{gap:0;margin-bottom:56px}
+.homepage-v4 #star-map h3{margin:0}
+.homepage-v4 #star-map .embed{width:min(100%,calc((100svh - 410px) * 16 / 9));margin:14px 0 16px}
+.homepage-v4 #star-map p{grid-column:1/-1;grid-row:3;max-width:none;margin:0}
+/* idea: whole section fits one screen after a nav jump (heading 2 lines, quote 1 line) */
+#idea h2{max-width:none;font-size:clamp(30px,4.2vw,60px);margin:0 0 24px}
+#idea .lead{margin-top:0;max-width:64ch}
+#idea .stages{margin:24px 0 0;padding-bottom:0}
+#idea .stages article{padding-bottom:0}
+#idea .lead{margin-bottom:0}
+#idea .callout{margin:28px 0 0;max-width:none}
+#idea .callout em{font-size:clamp(22px,2.3vw,34px);line-height:1.25}
+/* team: the "TEAM" label is the heading (big duplicate h2 is screen-reader only); photos capped so whole cards fit one screen */
+#team .cards.three.team{margin-top:0;padding-top:0;gap:40px;border-top:0}
+#team .shell:before{margin-bottom:28px}
+#team .cards.three.team article{border-top:0;padding-top:0}
+#team .team .team-photo{aspect-ratio:1/1!important;max-height:calc(100svh - 470px);min-height:180px;margin-bottom:18px}
+#team .team h3{font-size:clamp(24px,2.2vw,32px);margin:0 0 6px}
+/* one title size for Built / Idea / Team / Contact (the $19B screen keeps its numeral as the hero) */
+#built h2,#idea h2,#team h2,#contact h2{font-size:clamp(36px,5vw,72px);line-height:1.04}
+#team h2{margin:0 0 24px;max-width:none}
+/* ===== round 8: one section = one screen. Each section is exactly the viewport minus the header,
+   content centred, and a nav jump lands on the section edge, so the next section never peeks in. ===== */
+:root{--sec-top:clamp(28px,6vh,64px)} /* same label position on every screen */
+.section{min-height:calc(100svh - var(--head));display:flex;align-items:flex-start;box-sizing:border-box;padding:var(--sec-top) 0 12px;scroll-margin-top:0}
+.section>.shell{width:100%}
+:root{--foot:147px} /* fallback; v6.js sets the measured footer height */
+#contact{min-height:calc(100svh - var(--head) - var(--foot))}
+#problem .mega{font-size:clamp(80px,min(12vw,21vh),200px)}
+.homepage-v4 .demos article,.homepage-v4 #star-map{margin-bottom:0}
+#built .io.demos{margin-bottom:0}
+/* contact: original big headline + serif email, pinned to the top like every other screen (an older rule bottom-aligned it) */
+.section#contact{align-items:flex-start}
+#contact .shell.contact{row-gap:28px}
+/* what-if gets its own screen, so scale the comparison up */
+#whatif .compare{max-width:1000px}
+#whatif .compare-q{font-size:clamp(28px,3.6vw,52px);max-width:22ch;margin-bottom:clamp(28px,5vh,56px)}
+#whatif .bars{gap:28px;margin-bottom:32px}
+#whatif .bar{grid-template-columns:minmax(10rem,14rem) 1fr 6rem}
+#whatif .bar-label{font-size:clamp(15px,1.3vw,19px)}
+#whatif .bar-track{height:22px}
+#whatif .bar-val{font-size:clamp(20px,2vw,30px)}
+@media(max-width:760px){#whatif .bar{grid-template-columns:1fr 5rem}}
+/* star map: the recording is 16:9 with labels near its edges, so never crop it (round 6 forced 21:9 / 16:10 cover) */
+.homepage-v4 .demos article .embed{width:100%;margin:20px 0 28px}
+.homepage-v4 .demos video{aspect-ratio:16/9;object-fit:contain;width:100%;height:auto}
+/* what-if: one before/after comparison instead of the full dashboard */
+.compare{max-width:760px}
+.compare h3{font:700 12px/1 var(--font);letter-spacing:.24em;text-transform:uppercase;color:var(--ember);margin:0 0 16px}
+.compare-q{font:400 clamp(22px,2.6vw,34px)/1.2 var(--serif);margin:0 0 32px;max-width:24ch}
+.bars{display:grid;gap:18px;margin-bottom:24px}
+.bar{display:grid;grid-template-columns:minmax(9rem,12rem) 1fr 4.5rem;gap:16px;align-items:center}
+.bar-label{color:#d9d2c5;font-size:15px}
+.bar-track{height:14px;background:rgba(236,230,218,.06)}
+.bar-track i{display:block;height:100%;width:var(--w);background:var(--muted)}
+.bar.hot .bar-track i{background:var(--ember)}
+.bar-val{font:400 20px/1 var(--mono);text-align:right}
+.bar.hot .bar-val{color:var(--ember)}
+.compare .note{max-width:60ch}
+@media(max-width:760px){.bar{grid-template-columns:1fr 4rem;gap:8px 12px}.bar-label{grid-column:1/-1}}
 /* ===== Chinese page ===== */
 html:lang(zh) .world-hud:before{content:"已强平";letter-spacing:.3em}
 html:lang(zh) .world-hud:after{content:"每颗星 = 一个真实仓位"}

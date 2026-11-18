@@ -1,5 +1,8 @@
 (function(){
  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ // contact + footer together fill the last screen: publish the real footer height as --foot
+ var foot=document.querySelector('footer');
+ if(foot){var setFoot=function(){document.documentElement.style.setProperty('--foot',foot.offsetHeight+'px')};setFoot();addEventListener('resize',setFoot);addEventListener('load',setFoot)}
  // videos: muted loops that play only while visible
  document.querySelectorAll('.demos video').forEach(function(v){
   v.removeAttribute('controls');v.muted=true;v.loop=true;v.preload='metadata';
